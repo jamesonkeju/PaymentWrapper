@@ -1,0 +1,78 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PaymentWrapper.Services" GeneratedClassName="Appsetting">
+  <Profiles />
+  <Settings>
+    <Setting Name="Monnify_BaseUrl_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://sandbox.monnify.com/</Value>
+    </Setting>
+    <Setting Name="Monnify_BaseUrl_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://sandbox.monnify.com/</Value>
+    </Setting>
+    <Setting Name="User_Production_Credentails" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Monnify_NewTransaction_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api/v1/merchant/transactions/init-transaction</Value>
+    </Setting>
+    <Setting Name="Monnify_NewTransaction_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api/v1/merchant/transactions/init-transaction</Value>
+    </Setting>
+    <Setting Name="Monnify_Requery_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api/v2/transactions/</Value>
+    </Setting>
+    <Setting Name="Monnify_Requery_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api/v2/transactions/</Value>
+    </Setting>
+    <Setting Name="Monnify_Current" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NGN</Value>
+    </Setting>
+    <Setting Name="Paystack_BaseUrl_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.paystack.co/</Value>
+    </Setting>
+    <Setting Name="Paystack_BaseUrl_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.paystack.co/</Value>
+    </Setting>
+    <Setting Name="Paystack_InitializeTransaction_Url_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">transaction/initialize</Value>
+    </Setting>
+    <Setting Name="Paystack_VerifyTransaction_Url_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">transaction/verify/{0}</Value>
+    </Setting>
+    <Setting Name="Paystack_VerifyTransaction_Url_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">transaction/verify/{0}</Value>
+    </Setting>
+    <Setting Name="Remita_paymentinit_url_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit</Value>
+    </Setting>
+    <Setting Name="Remita_paymentinit_url_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit</Value>
+    </Setting>
+    <Setting Name="Remita_Check_Status_Url_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.remitademo.net/remita/ecomm</Value>
+    </Setting>
+    <Setting Name="Remita_Check_Status_Url_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.remitademo.net/remita/ecomm</Value>
+    </Setting>
+    <Setting Name="Fluttter_FlutterRequeryURL_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.flutterwave.com/v3/transactions/{0}/verify</Value>
+    </Setting>
+    <Setting Name="Fluttter_FlutterWavePaymentURL_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.flutterwave.com/v3/payments</Value>
+    </Setting>
+    <Setting Name="Fluttter_FlutterRequeryURL_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.flutterwave.com/v3/transactions/{0}/verify</Value>
+    </Setting>
+    <Setting Name="Fluttter_FlutterWavePaymentURL_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.flutterwave.com/v3/payments</Value>
+    </Setting>
+    <Setting Name="Monnify_Auth_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api/v1/auth/login</Value>
+    </Setting>
+    <Setting Name="Monnify_Auth_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api/v1/auth/login</Value>
+    </Setting>
+    <Setting Name="Paystack_InitializeTransaction_Url_Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">transaction/initialize</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
