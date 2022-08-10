@@ -194,8 +194,8 @@ namespace PaymentWrapper.Services {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paym" +
-            "entinit")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://login.remita.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/pa" +
+            "ymentinit")]
         public string Remita_paymentinit_url_Production {
             get {
                 return ((string)(this["Remita_paymentinit_url_Production"]));
@@ -219,7 +219,7 @@ namespace PaymentWrapper.Services {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.remitademo.net/remita/ecomm")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://login.remita.net/remita/ecomm")]
         public string Remita_Check_Status_Url_Production {
             get {
                 return ((string)(this["Remita_Check_Status_Url_Production"]));

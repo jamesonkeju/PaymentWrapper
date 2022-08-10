@@ -45,13 +45,13 @@
       <Value Profile="(Default)">https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit</Value>
     </Setting>
     <Setting Name="Remita_paymentinit_url_Production" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit</Value>
+      <Value Profile="(Default)">https://login.remita.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit</Value>
     </Setting>
     <Setting Name="Remita_Check_Status_Url_Test" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://www.remitademo.net/remita/ecomm</Value>
     </Setting>
     <Setting Name="Remita_Check_Status_Url_Production" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://www.remitademo.net/remita/ecomm</Value>
+      <Value Profile="(Default)">http://login.remita.net/remita/ecomm</Value>
     </Setting>
     <Setting Name="Fluttter_FlutterRequeryURL_Test" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://api.flutterwave.com/v3/transactions/{0}/verify</Value>
