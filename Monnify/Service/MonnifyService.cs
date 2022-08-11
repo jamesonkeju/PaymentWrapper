@@ -1,6 +1,6 @@
 ﻿
 using Newtonsoft.Json;
-using PaymentWrapper.Models.MonnifyModels;
+using PaymentWrapper.Services.Models.MonnifyModels;
 using PaymentWrapper.Services.Monnify.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,8 +10,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using static PaymentWrapper.Models.MonnifyModels.AccessTokenResponse;
-using static PaymentWrapper.Models.MonnifyModels.InitializeTransaction;
+using static PaymentWrapper.Services.Models.MonnifyModels.AccessTokenResponse;
+using static PaymentWrapper.Services.Models.MonnifyModels.InitializeTransaction;
 
 namespace PaymentWrapper.Services.Monnify.Service
 {
@@ -19,7 +19,7 @@ namespace PaymentWrapper.Services.Monnify.Service
     {
         private async Task<AccessTokenRoot> GetAccessToken(string ApiKey, string SecretKey, string baseurl, string Auth_Url)
         {
-          
+            var result = new AccessTokenResponse.AccessTokenRoot();
 
             try
             {
@@ -53,18 +53,19 @@ namespace PaymentWrapper.Services.Monnify.Service
                                            .ConfigureAwait(false))
                         {
                             var data = await response.Content.ReadAsStringAsync();
-                            var loginResponse = JsonConvert.DeserializeObject<AccessTokenResponse.AccessTokenRoot>(data);
-                            return loginResponse;
+                            result = JsonConvert.DeserializeObject<AccessTokenResponse.AccessTokenRoot>(data);
+                            return result;
                         }
 
                     }
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                result.requestSuccessful = false;
+                result.responseMessage = ex.Message;
+                return result;
             }
         }
 
@@ -278,7 +279,7 @@ namespace PaymentWrapper.Services.Monnify.Service
         }
 
 
-        public async Task<string> PostMonnifyAsync(object content, string token, string apiurl)
+        private async Task<string> PostMonnifyAsync(object content, string token, string apiurl)
         {
             string buildurl = apiurl;
 
@@ -334,11 +335,66 @@ namespace PaymentWrapper.Services.Monnify.Service
             catch (Exception ex)
             {
 
-                return "";
+                return ex.Message;
             }
 
 
         }
 
+        public async Task<ReserveAccountResponse.Root> ReserveAccountMonnify(ReserveAccountNo payload, MonnifyCredentials credentails)
+        {
+            var msg = new ReserveAccountResponse.Root();
+
+            string baseurl = "";
+            string Monnify_Currency = "";
+            if (Appsetting.Default.User_Production_Credentails == true)
+            {
+
+                baseurl = Appsetting.Default.Monnify_BaseUrl_Production;
+              
+            }
+            else
+            {
+                baseurl = Appsetting.Default.Monnify_BaseUrl_Test;
+              
+            }
+            Monnify_Currency = Appsetting.Default.Monnify_Current;
+
+            try
+            {
+
+                    string processpayment = baseurl + Appsetting.Default.Monnify_Reserve_AccountNo; ;
+
+                    var gettoken = await GetAccessToken(credentails.Monnify_Key, credentails.Monnify_SercetKey, baseurl, Appsetting.Default.Monnify_Auth_Production);
+
+                    if (gettoken.requestSuccessful == false)
+
+                    {
+                        return new ReserveAccountResponse.Root()
+                        {
+                            requestSuccessful = false,
+                            responseMessage = "Unable to generate access token at the moment. Please try again later"
+                        };
+                    }
+
+
+                    string accessToken = gettoken.responseBody.accessToken;
+                    ServicePointManager.Expect100Continue = true;
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                    var responseData = await PostMonnifyAsync(payload, accessToken, processpayment);
+
+                    msg = JsonConvert.DeserializeObject<ReserveAccountResponse.Root>(responseData);
+                    return msg;
+            }
+            catch (Exception ex)
+            {
+                return new ReserveAccountResponse.Root()
+                {
+                    requestSuccessful = false,
+                    responseMessage = ex.Message
+                };
+            }
+        }
     }
 }

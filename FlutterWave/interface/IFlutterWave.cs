@@ -1,10 +1,11 @@
-﻿using PaymentWrapper.Models.FlutterWave;
+﻿
+using PaymentWrapper.Services.Models.FlutterWave;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static PaymentWrapper.Models.FlutterWave.FlutterSinglePaymentResponse;
+using static PaymentWrapper.Services.Models.FlutterWave.FlutterSinglePaymentResponse;
 
 namespace PaymentWrapper.Services.FlutterWave
 {

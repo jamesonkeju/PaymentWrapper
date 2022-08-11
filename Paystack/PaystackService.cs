@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using PaymentWrapper.Models.Paystack;
+using PaymentWrapper.Services.Models.Paystack;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,33 +7,34 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using static PaymentWrapper.Services.Models.MonnifyModels.InitializeTransaction;
 
 namespace PaymentWrapper.Services.Paystack
 {
     public class PaystackService : IPaystack
     {
 
-        public async Task<InitializeResponse> InitializePaystackPayment(InitializeRequest request, PaystackCredentials credentials)
+        public async Task<Models.Paystack.InitializeResponse> InitializePaystackPayment(InitializeRequest request, PaystackCredentials credentials)
         {
             string baseurl = "";
             string PostTransaction_Url = "";
-            string Monnify_Auth_URL = "";
-            string Monnify_Currency = "";
+       
+
             if (Appsetting.Default.User_Production_Credentails == true)
             {
                 baseurl = Appsetting.Default.Paystack_BaseUrl_Production;
                 PostTransaction_Url = Appsetting.Default.Paystack_InitializeTransaction_Url_Production;
-                Monnify_Auth_URL = Appsetting.Default.Monnify_Auth_Production;
+               
             }
             else
             {
                 baseurl = Appsetting.Default.Paystack_BaseUrl_Test;
                 PostTransaction_Url = Appsetting.Default.Paystack_InitializeTransaction_Url_Test;
-                Monnify_Auth_URL = Appsetting.Default.Monnify_Current;
+   
             }
            
 
-            var msg = new InitializeResponse();
+            var msg = new Models.Paystack.InitializeResponse();
             try
             {
                 var SecKey = string.Format("Bearer {0}", credentials.SecretKey);
@@ -75,7 +76,7 @@ namespace PaymentWrapper.Services.Paystack
                 var content = sr.ReadToEnd();
                 var cc = JsonConvert.DeserializeObject(content);
                 var cd = JsonConvert.DeserializeObject(cc.ToString());
-                msg = JsonConvert.DeserializeObject<InitializeResponse>(content);
+                msg = JsonConvert.DeserializeObject<Models.Paystack.InitializeResponse>(content);
 
                 return msg;
             }

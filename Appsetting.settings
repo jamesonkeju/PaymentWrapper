@@ -5,9 +5,6 @@
     <Setting Name="Monnify_BaseUrl_Test" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://sandbox.monnify.com/</Value>
     </Setting>
-    <Setting Name="Monnify_BaseUrl_Production" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://sandbox.monnify.com/</Value>
-    </Setting>
     <Setting Name="User_Production_Credentails" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -73,6 +70,12 @@
     </Setting>
     <Setting Name="Paystack_InitializeTransaction_Url_Test" Type="System.String" Scope="User">
       <Value Profile="(Default)">transaction/initialize</Value>
+    </Setting>
+    <Setting Name="Monnify_BaseUrl_Production" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://sandbox.monnify.com/</Value>
+    </Setting>
+    <Setting Name="Monnify_Reserve_AccountNo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api/v2/bank-transfer/reserved-accounts</Value>
     </Setting>
   </Settings>
 </SettingsFile>

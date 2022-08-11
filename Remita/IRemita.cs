@@ -1,10 +1,11 @@
-﻿using PaymentWrapper.Models.Remita;
+﻿
+using PaymentWrapper.Services.Models.Remita;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static PaymentWrapper.Models.Remita.RemitaSplitModel;
+
 
 namespace PaymentWrapper.Services.Remita
 {

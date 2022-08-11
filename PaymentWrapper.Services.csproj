@@ -52,7 +52,11 @@
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.6.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -67,10 +71,22 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -78,6 +94,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appsetting.Designer.cs">
@@ -87,19 +104,34 @@
     </Compile>
     <Compile Include="FlutterWave\interface\IFlutterWave.cs" />
     <Compile Include="FlutterWave\Service\FlutterService.cs" />
+    <Compile Include="Models\FlutterWave\FlutterCredentials.cs" />
+    <Compile Include="Models\FlutterWave\FlutterRequest.cs" />
+    <Compile Include="Models\FlutterWave\FlutterResponse.cs" />
+    <Compile Include="Models\FlutterWave\FlutterSinglePaymentResponse.cs" />
+    <Compile Include="Models\MonnifyModels\AccessTokenRequest.cs" />
+    <Compile Include="Models\MonnifyModels\InitializeNewPayment.cs" />
+    <Compile Include="Models\MonnifyModels\InitializeTransaction.cs" />
+    <Compile Include="Models\MonnifyModels\MonnifyCredentials.cs" />
+    <Compile Include="Models\MonnifyModels\MonnifyRequeryResponse.cs" />
+    <Compile Include="Models\MonnifyModels\ReserveAccountNo.cs" />
+    <Compile Include="Models\MonnifyModels\ReserveAccountResponse.cs" />
+    <Compile Include="Models\Paystack\InitializeRequest.cs" />
+    <Compile Include="Models\Paystack\InitializeResponse.cs" />
+    <Compile Include="Models\Paystack\PaystackCredentials.cs" />
+    <Compile Include="Models\Paystack\VerifyRequest.cs" />
+    <Compile Include="Models\Paystack\VerifyResponse.cs" />
+    <Compile Include="Models\Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Remita\RemitaCredentials.cs" />
+    <Compile Include="Models\Remita\RemitaModel.cs" />
+    <Compile Include="Models\Remita\RemitaSplitModel.cs" />
     <Compile Include="Monnify\Interface\IMonnify.cs" />
     <Compile Include="Monnify\Service\MonnifyService.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Paystack\IPaystack.cs" />
     <Compile Include="Paystack\PaystackService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Remita\IRemita.cs" />
     <Compile Include="Remita\RemitaService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PaymentWrapper.Models\PaymentWrapper.Models.csproj">
-      <Project>{9DA67FC8-5062-4BD3-A16B-CB7D21BDFCB2}</Project>
-      <Name>PaymentWrapper.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -108,7 +140,255 @@
       <LastGenOutput>Appsetting.Designer.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\.signature.p7s" />
+    <None Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\Microsoft.Bcl.AsyncInterfaces.5.0.0.nupkg" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\.signature.p7s" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\MonoAndroid10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\MonoTouch10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\net45\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\netcoreapp2.0\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\portable-net45+win8+wp8+wpa81\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\uap10.0.16299\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\win8\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\wp80\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\wpa81\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\xamarinios10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\xamarinmac20\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\xamarintvos10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\lib\xamarinwatchos10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\Microsoft.CSharp.4.7.0.nupkg" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\MonoAndroid10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\MonoTouch10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\net45\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\netcoreapp2.0\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\portable-net45+win8+wp8+wpa81\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\uap10.0.16299\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\win8\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\wp80\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\wpa81\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\xamarinios10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\xamarinmac20\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\xamarintvos10\_._" />
+    <None Include="packages\Microsoft.CSharp.4.7.0\ref\xamarinwatchos10\_._" />
+    <None Include="packages\Newtonsoft.Json.6.0.1\.signature.p7s" />
+    <None Include="packages\Newtonsoft.Json.6.0.1\Newtonsoft.Json.6.0.1.nupkg" />
+    <None Include="packages\Newtonsoft.Json.6.0.1\tools\install.ps1" />
+    <None Include="packages\ServiceStack.Client.6.2.0\.signature.p7s" />
+    <None Include="packages\ServiceStack.Client.6.2.0\ServiceStack.Client.6.2.0.nupkg" />
+    <None Include="packages\ServiceStack.Interfaces.6.2.0\.signature.p7s" />
+    <None Include="packages\ServiceStack.Interfaces.6.2.0\ServiceStack.Interfaces.6.2.0.nupkg" />
+    <None Include="packages\ServiceStack.Text.6.2.0\.signature.p7s" />
+    <None Include="packages\ServiceStack.Text.6.2.0\ServiceStack.Text.6.2.0.nupkg" />
+    <None Include="packages\System.Buffers.4.5.1\.signature.p7s" />
+    <None Include="packages\System.Buffers.4.5.1\lib\netcoreapp2.0\_._" />
+    <None Include="packages\System.Buffers.4.5.1\lib\uap10.0.16299\_._" />
+    <None Include="packages\System.Buffers.4.5.1\ref\netcoreapp2.0\_._" />
+    <None Include="packages\System.Buffers.4.5.1\ref\uap10.0.16299\_._" />
+    <None Include="packages\System.Buffers.4.5.1\System.Buffers.4.5.1.nupkg" />
+    <None Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\.signature.p7s" />
+    <None Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\buildTransitive\netcoreapp2.0\System.Diagnostics.DiagnosticSource.targets" />
+    <None Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\buildTransitive\netcoreapp3.1\_._" />
+    <None Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\System.Diagnostics.DiagnosticSource.6.0.0.nupkg" />
+    <None Include="packages\System.Memory.4.5.4\.signature.p7s" />
+    <None Include="packages\System.Memory.4.5.4\lib\netcoreapp2.1\_._" />
+    <None Include="packages\System.Memory.4.5.4\ref\netcoreapp2.1\_._" />
+    <None Include="packages\System.Memory.4.5.4\System.Memory.4.5.4.nupkg" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\.signature.p7s" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\MonoAndroid10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\MonoTouch10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\netcoreapp2.0\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\uap10.0.16299\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarinios10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarinmac20\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarintvos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarinwatchos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\MonoAndroid10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\MonoTouch10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\netcoreapp2.0\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\uap10.0.16299\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarinios10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarinmac20\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarintvos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarinwatchos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\System.Numerics.Vectors.4.5.0.nupkg" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\.signature.p7s" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\buildTransitive\netcoreapp2.0\System.Runtime.CompilerServices.Unsafe.targets" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\buildTransitive\netcoreapp3.1\_._" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\System.Runtime.CompilerServices.Unsafe.6.0.0.nupkg" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\.signature.p7s" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\MonoAndroid10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\MonoTouch10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\netcoreapp2.1\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\xamarinios10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\xamarinmac20\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\xamarintvos10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\xamarinwatchos10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\ref\MonoAndroid10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\ref\MonoTouch10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\ref\netcoreapp2.1\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\ref\xamarinios10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\ref\xamarinmac20\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\ref\xamarintvos10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\ref\xamarinwatchos10\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.4\System.Threading.Tasks.Extensions.4.5.4.nupkg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\PaymentWrapper.Services.dll" />
+    <Content Include="bin\Debug\PaymentWrapper.Services.pdb" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\Icon.png" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\LICENSE.TXT" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\version.txt" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\lib\netcore50\Microsoft.CSharp.dll" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\lib\netstandard1.3\Microsoft.CSharp.dll" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\lib\netstandard2.0\Microsoft.CSharp.dll" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\lib\netstandard2.0\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\LICENSE.TXT" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\de\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\es\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\fr\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\it\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\ja\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\ko\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\Microsoft.CSharp.dll" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\ru\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\zh-hans\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netcore50\zh-hant\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\de\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\es\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\fr\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\it\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\ja\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\ko\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\Microsoft.CSharp.dll" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\ru\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\zh-hans\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard1.0\zh-hant\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard2.0\Microsoft.CSharp.dll" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\ref\netstandard2.0\Microsoft.CSharp.xml" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\Microsoft.CSharp.4.7.0\version.txt" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\netcore45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\netcore45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.xml" />
+    <Content Include="packages\ServiceStack.Client.6.2.0\lib\net472\ServiceStack.Client.dll" />
+    <Content Include="packages\ServiceStack.Client.6.2.0\lib\net472\ServiceStack.Client.xml" />
+    <Content Include="packages\ServiceStack.Client.6.2.0\lib\net6.0\ServiceStack.Client.dll" />
+    <Content Include="packages\ServiceStack.Client.6.2.0\lib\net6.0\ServiceStack.Client.xml" />
+    <Content Include="packages\ServiceStack.Client.6.2.0\lib\netstandard2.0\ServiceStack.Client.dll" />
+    <Content Include="packages\ServiceStack.Client.6.2.0\lib\netstandard2.0\ServiceStack.Client.xml" />
+    <Content Include="packages\ServiceStack.Interfaces.6.2.0\lib\net472\ServiceStack.Interfaces.dll" />
+    <Content Include="packages\ServiceStack.Interfaces.6.2.0\lib\net6.0\ServiceStack.Interfaces.dll" />
+    <Content Include="packages\ServiceStack.Interfaces.6.2.0\lib\netstandard2.0\ServiceStack.Interfaces.dll" />
+    <Content Include="packages\ServiceStack.Text.6.2.0\lib\net472\ServiceStack.Text.dll" />
+    <Content Include="packages\ServiceStack.Text.6.2.0\lib\net472\ServiceStack.Text.xml" />
+    <Content Include="packages\ServiceStack.Text.6.2.0\lib\net6.0\ServiceStack.Text.dll" />
+    <Content Include="packages\ServiceStack.Text.6.2.0\lib\net6.0\ServiceStack.Text.xml" />
+    <Content Include="packages\ServiceStack.Text.6.2.0\lib\netstandard2.0\ServiceStack.Text.dll" />
+    <Content Include="packages\ServiceStack.Text.6.2.0\lib\netstandard2.0\ServiceStack.Text.xml" />
+    <Content Include="packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Content Include="packages\System.Buffers.4.5.1\lib\net461\System.Buffers.xml" />
+    <Content Include="packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll" />
+    <Content Include="packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.xml" />
+    <Content Include="packages\System.Buffers.4.5.1\lib\netstandard2.0\System.Buffers.dll" />
+    <Content Include="packages\System.Buffers.4.5.1\lib\netstandard2.0\System.Buffers.xml" />
+    <Content Include="packages\System.Buffers.4.5.1\LICENSE.TXT" />
+    <Content Include="packages\System.Buffers.4.5.1\ref\net45\System.Buffers.dll" />
+    <Content Include="packages\System.Buffers.4.5.1\ref\net45\System.Buffers.xml" />
+    <Content Include="packages\System.Buffers.4.5.1\ref\netstandard1.1\System.Buffers.dll" />
+    <Content Include="packages\System.Buffers.4.5.1\ref\netstandard1.1\System.Buffers.xml" />
+    <Content Include="packages\System.Buffers.4.5.1\ref\netstandard2.0\System.Buffers.dll" />
+    <Content Include="packages\System.Buffers.4.5.1\ref\netstandard2.0\System.Buffers.xml" />
+    <Content Include="packages\System.Buffers.4.5.1\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Buffers.4.5.1\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Buffers.4.5.1\version.txt" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\Icon.png" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net5.0\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net5.0\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net6.0\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net6.0\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\netstandard2.0\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\netstandard2.0\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\LICENSE.TXT" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Diagnostics.DiagnosticSource.6.0.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Content Include="packages\System.Memory.4.5.4\lib\net461\System.Memory.xml" />
+    <Content Include="packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll" />
+    <Content Include="packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.xml" />
+    <Content Include="packages\System.Memory.4.5.4\lib\netstandard2.0\System.Memory.dll" />
+    <Content Include="packages\System.Memory.4.5.4\lib\netstandard2.0\System.Memory.xml" />
+    <Content Include="packages\System.Memory.4.5.4\LICENSE.TXT" />
+    <Content Include="packages\System.Memory.4.5.4\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Memory.4.5.4\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Memory.4.5.4\version.txt" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard1.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard1.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard2.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard2.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\LICENSE.TXT" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net45\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net45\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net46\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net46\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard1.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard1.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard2.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard2.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\version.txt" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\Icon.png" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net6.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net6.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\LICENSE.TXT" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.6.0.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\netstandard1.0\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\netstandard1.0\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\netstandard2.0\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\LICENSE.TXT" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.4\version.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

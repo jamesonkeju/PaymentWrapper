@@ -37,18 +37,6 @@ namespace PaymentWrapper.Services {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://sandbox.monnify.com/")]
-        public string Monnify_BaseUrl_Production {
-            get {
-                return ((string)(this["Monnify_BaseUrl_Production"]));
-            }
-            set {
-                this["Monnify_BaseUrl_Production"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool User_Production_Credentails {
             get {
@@ -310,6 +298,30 @@ namespace PaymentWrapper.Services {
             }
             set {
                 this["Paystack_InitializeTransaction_Url_Test"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://sandbox.monnify.com/")]
+        public string Monnify_BaseUrl_Production {
+            get {
+                return ((string)(this["Monnify_BaseUrl_Production"]));
+            }
+            set {
+                this["Monnify_BaseUrl_Production"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("api/v2/bank-transfer/reserved-accounts")]
+        public string Monnify_Reserve_AccountNo {
+            get {
+                return ((string)(this["Monnify_Reserve_AccountNo"]));
+            }
+            set {
+                this["Monnify_Reserve_AccountNo"] = value;
             }
         }
     }

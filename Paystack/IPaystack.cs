@@ -1,4 +1,4 @@
-﻿using PaymentWrapper.Models.Paystack;
+﻿using PaymentWrapper.Services.Models.Paystack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace PaymentWrapper.Services.Paystack
 {
    public  interface IPaystack
     {
-        Task<PaymentWrapper.Models.Paystack.VerifyResponse> VerifyPaystackPayment(VerifyRequest request, PaystackCredentials credentials);
-        Task<PaymentWrapper.Models.Paystack.InitializeResponse> InitializePaystackPayment(InitializeRequest request, PaystackCredentials credentials);
+        Task<VerifyResponse> VerifyPaystackPayment(VerifyRequest request, PaystackCredentials credentials);
+        Task<InitializeResponse> InitializePaystackPayment(InitializeRequest request, PaystackCredentials credentials);
     }
 }
