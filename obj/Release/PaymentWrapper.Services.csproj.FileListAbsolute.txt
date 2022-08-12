@@ -35,3 +35,4 @@ C:\Development\PaymentWrapper\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Development\PaymentWrapper\obj\Release\PaymentWrapper.Services.csproj.CopyComplete
 C:\Development\PaymentWrapper\obj\Release\PaymentWrapper.Services.dll
 C:\Development\PaymentWrapper\obj\Release\PaymentWrapper.Services.pdb
+C:\Development\PaymentWrapper\obj\Release\PaymentWrapper.Services.csproj.AssemblyReference.cache

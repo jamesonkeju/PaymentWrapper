@@ -1,13 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Models",
     "\\Models\\MonnifyModels",
     "\\Monnify",
     "\\Monnify\\Interface",
     "\\Monnify\\Service",
+    "\\obj",
+    "\\obj\\Debug",
     "\\Remita"
   ],
-  "SelectedNode": "\\Monnify\\Interface\\IMonnify.cs",
+  "SelectedNode": "\\obj\\Debug\\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs",
   "PreviewInSolutionExplorer": false
 }
