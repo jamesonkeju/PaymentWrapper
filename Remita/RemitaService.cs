@@ -23,7 +23,8 @@ namespace PaymentWrapper.Services.Remita
             string hashed = BitConverter.ToString(EncryptedSHA512).Replace("-", "").ToLower();
             return hashed;
         }
-        public async Task<RemitaQueryResponseModel> VerifyRemitaPayment(RequeryRemitaModel payload, RemitaCredentials credentials)
+        public async Task<RemitaQueryResponseModel> VerifyRemitaPayment(RequeryRemitaModel payload
+            , RemitaCredentials credentials)
         {
             var msg = new RemitaQueryResponseModel();
             try
